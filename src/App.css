@@ -1,12 +1,14 @@
 #root {
   margin: 0;
 }
-.mainContainer{
+
+.mainContainer {
   height: 100vh;
   width: 100vw;
+  box-shadow: 0px 4px 100px rgba(0, 0, 0, 1);
 }
 
-.container{
+.container {
   width: 100%;
   height: 100%;
   flex-direction: column;
@@ -16,47 +18,98 @@
   align-items: center;
 }
 
-.header{
+.header {
   height: 96px;
   background-color: #ffffff;
   align-items: center;
   justify-content: space-between;
   display: flex;
-  padding:0 34px;
+  padding: 0 34px;
 }
 
-.headerButtonContainer{
+.headerButtonContainer {
   display: flex;
   column-gap: 8px;
 }
 
-.mainContent{
+.mainContent {
   column-gap: 72px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 70px;
 }
 
-.imagePage{
+.ongsMainContainer {
+  flex-direction: column;
+  display: flex;
+  background-color: #fffcee;
+  padding: 115px;
+}
+
+.imageMainPage {
   width: 100%;
 }
 
-h1{
+.homePageSubtitle {
+  color: black;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.ongsSummary {
+  color: black;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 180px;
+}
+
+.gridContainer {
+  align-self: center;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  gap: 56px;
+}
+
+.ongCard {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding-bottom: 60px;
+  box-shadow: 1px 2px 55px 0px rgba(0, 0, 0, 0.17);
+  box-sizing: border-box;
+}
+
+.ongCardTitle {
+  font-size: 36px;
+  color: #457461;
+  font-weight: bold;
+}
+
+.ongCardDescription {
+  color: black;
+  font-size: 24px;
+}
+
+.ongCardTitleContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 45px;
+}
+
+h1 {
   font-size: 64px;
-  color:black;
+  color: black;
   font-weight: bold;
   line-height: 78px;
 }
 
-h2{
+h2 {
   font-size: 24px;
-  color:black;
+  color: black;
   font-weight: normal;
-}
-
-p{
-color:black;
-font-size: 20px;
-line-height: 26px;
 }
