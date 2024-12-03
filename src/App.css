@@ -18,6 +18,14 @@
   align-items: center;
 }
 
+.homePageMain {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffcee;
+}
+
 .header {
   height: 96px;
   background-color: #ffffff;
