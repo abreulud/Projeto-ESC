@@ -1,9 +1,10 @@
+import './App.css';
 import { useState } from 'react';
 import escLogo from './assets/images/esc_logo.png';
-
-import './App.css';
 import { HomePage } from './components/HomePage';
 import { Ongs } from './components/Ongs';
+import { Aprendizado } from './components/Aprendizado';
+
 const headerButtons = ['Página Inicial', 'Aprendizado', 'ONGs'];
 function App() {
   const [selectedHeaderOption, setSelectedHeaderOption] = useState(
@@ -16,6 +17,8 @@ function App() {
         return <HomePage />;
       case 'ONGs':
         return <Ongs />;
+      case 'Aprendizado':
+        return <Aprendizado />;
       default:
         return <HomePage />;
     }

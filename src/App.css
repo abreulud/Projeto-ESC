@@ -39,12 +39,22 @@
   align-items: center;
   padding: 0 70px;
 }
+.mainContentLearning {
+  column-gap: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 70px;
+}
 
 .ongsMainContainer {
   flex-direction: column;
   display: flex;
   background-color: #fffcee;
-  padding: 115px;
+  padding: 111px 36px 36px 36px;
+  justify-content: center;
+  align-items: center;
 }
 
 .imageMainPage {
@@ -53,52 +63,49 @@
 
 .homePageSubtitle {
   color: black;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 14px;
 }
 
 .ongsSummary {
   color: black;
-  font-weight: 400;
-  font-size: 24px;
-  margin-bottom: 180px;
+  font-size: 20px;  
 }
 
 .gridContainer {
-  align-self: center;
-  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-content: center;
-  gap: 56px;
+  row-gap: 50px
 }
 
 .ongCard {
-  background-color: white;
+  width: 420px;
   display: flex;
   flex-direction: column;
-  width: 60%;
+  background-color: #fff;
   padding-bottom: 60px;
   box-shadow: 1px 2px 55px 0px rgba(0, 0, 0, 0.17);
   box-sizing: border-box;
+  position: relative;
 }
 
 .ongCardTitle {
-  font-size: 36px;
+  font-size: 22px;
   color: #457461;
   font-weight: bold;
+  margin-top: 60px;
 }
 
 .ongCardDescription {
   color: black;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .ongCardTitleContainer {
   display: flex;
   flex-direction: column;
-  padding: 0 45px;
+  padding: 0 32px;
 }
 
 h1 {
@@ -109,7 +116,7 @@ h1 {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 18px;
   color: black;
   font-weight: normal;
 }
