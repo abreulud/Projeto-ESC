@@ -65,9 +65,7 @@
   align-items: center;
 }
 
-.imageMainPage {
-  width: 100%;
-}
+.imageMainPage {}
 
 .homePageSubtitle {
   color: black;
@@ -127,4 +125,22 @@ h2 {
   font-size: 18px;
   color: black;
   font-weight: normal;
+}
+
+.dashboard{
+  width: 75%;
+}
+
+.tree{
+  height: 930px;
+  width: 100%;
+  margin-top: 15px;
+
+}
+
+.treeText{
+  font-size: 40px;
+  position: absolute;
+  top: 20%;
+  left: 90px;
 }
