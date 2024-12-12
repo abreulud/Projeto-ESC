@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useCallback, useEffect, useState } from 'react';
 import LightBulb from '../../assets/images/light_bulb.png';
 // @ts-ignore
@@ -32,11 +30,10 @@ export const Aprendizado = () => {
 
   const currentQuiz = quizQuestions[currentQuestionIndex];
   const correctAnswerIndex = currentQuiz
-    ? // @ts-ignore
-      answerMapping[currentQuiz.correctAnswer]
+    ? answerMapping[currentQuiz.correctAnswer]
     : null;
 
-  const handleAnswerClick = (option: string) => {
+  const handleAnswerClick = (option) => {
     if (!isAnswered) {
       setSelectedAnswer(option);
       setIsAnswered(true);
@@ -45,7 +42,7 @@ export const Aprendizado = () => {
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
-      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setSelectedAnswer('');
       setIsAnswered(false);
     } else {
@@ -66,9 +63,12 @@ export const Aprendizado = () => {
       color: '#457461',
     },
     section: {
-      textAlign: 'center',
-      padding: 100,
       color: '#223C32',
+      textAlign: 'center',
+      paddingTop: 300,
+      paddingBottom: 205,
+      paddingLeft: 100,
+      paddingRight: 100,
     },
     quizButton: {
       width: 170,
@@ -112,11 +112,7 @@ export const Aprendizado = () => {
       fontWeight: 'bold',
       cursor: 'pointer',
     },
-    answerButton: (
-      isAnswered: boolean,
-      isSelected: boolean,
-      isCorrect: boolean,
-    ) => ({
+    answerButton: (isAnswered, isSelected, isCorrect) => ({
       display: 'block',
       width: '100%',
       padding: 10,
@@ -147,7 +143,7 @@ export const Aprendizado = () => {
       border: 'none',
       cursor: 'pointer',
     },
-  } as any;
+  };
 
   return (
     <div style={styles.container}>
@@ -155,12 +151,30 @@ export const Aprendizado = () => {
         <div>
           <h1>
             <span style={styles.header}>A</span>
-            <span style={{ color: 'black' }}>prendizado</span>
+            <span style={{ color: 'black' }}>
+              prendizado
+              <br />
+            </span>
           </h1>
+
           <h2>
-            Em nossa página de aprendizado você encontrará informações valiosas
-            sobre práticas sustentáveis.
+            Em nossa página de aprendizado você encontrará
+            <br />
+            informações valiosas sobre as práticas sustentáveis,
+            <br />
+            gestão responsável de resíduos e como pequenas ações
+            <br />
+            podem causar um grande impacto no meio ambiente.
           </h2>
+          <p className="homePageSubtitle">
+            Nosso objetivo é capacitar você a adotar hábitos mais conscientes e
+            <br />
+            contribuir para a preservação do nosso planeta. Ao final, teste seus
+            <br />
+            conhecimentos com um quiz educativo e veja se está preparado para
+            <br />
+            fazer a diferença!
+          </p>
         </div>
         <img
           style={{
@@ -172,13 +186,31 @@ export const Aprendizado = () => {
         />
       </section>
       {quizQuestions?.length ? (
-        <button onClick={() => setIsOpen(true)} style={styles.quizButton}>
+        <button
+          onClick={() => setIsOpen(true)}
+          style={styles.quizButton}>
           Acessar Quiz
         </button>
       ) : null}
       <p style={styles.section}>
         A conscientização é essencial para incentivar a separação correta e a
         reciclagem dos resíduos.
+        <br />
+        <br />
+        Muitas vezes, as pessoas não têm conhecimento sobre os diferentes tipos
+        de resíduos e como podem ser reciclados ou reutilizados.
+        <br />
+        <br />
+        Ao educar a população sobre a importância da segregação e os benefícios
+        ambientais da reciclagem, é possível aumentar significativamente as
+        taxas de reciclagem e reduzir a quantidade de resíduos enviados para
+        aterros sanitários.
+        <br />
+        <br />
+        Outro aspecto relevante da conscientização na gestão de resíduos é o
+        combate ao desperdício. Ao promover uma cultura de consumo consciente e
+        redução do desperdício, é possível minimizar a quantidade de resíduos
+        produzidos e maximizar o uso eficiente dos recursos naturais.
       </p>
       <Modal
         isOpen={modalIsOpen}
@@ -196,19 +228,17 @@ export const Aprendizado = () => {
               </span>
             </div>
             <h3 style={{ color: 'black', marginBottom: 20 }}>
-              {/* @ts-ignore */}
               {currentQuiz.question}
             </h3>
             <div style={{ marginTop: 20 }}>
-              {/* @ts-ignore */}
-              {currentQuiz.options.map((option: string, index: number) => (
+              {currentQuiz.options.map((option, index) => (
                 <button
                   key={index}
                   onClick={() => handleAnswerClick(option)}
                   style={styles.answerButton(
                     isAnswered,
                     option === selectedAnswer,
-                    index === correctAnswerIndex,
+                    index === correctAnswerIndex
                   )}>
                   {option}
                 </button>
