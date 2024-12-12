@@ -5,13 +5,18 @@ import Modal from 'react-modal';
 import axios from 'axios';
 
 export const Aprendizado = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+  //Coordenar a renderização do modal de quiz na tela
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  //Armazenar as perguntas do quiz vindas do backend
   const [quizQuestions, setQuizQuestions] = useState([]);
+  //Fazer um rastreamento do index da pergunta atual dentro do array de perguntas do quiz
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  //Resposta selecionada do usuário para a pergunta atual
   const [selectedAnswer, setSelectedAnswer] = useState('');
+  //Saber se o usuário respondeu a pergunta atual ou não para mudar a cor do botão baseado na resposta
   const [isAnswered, setIsAnswered] = useState(false);
 
-  // Map letters to indices
+  // Dicionário que co-relaciona as possíveis respostas das perguntas com um index específico. (Porque o bankend retorna como uma letra e não com um index para lidar melhor com lista de perguntas)
   const answerMapping = {
     a: 0,
     b: 1,
@@ -19,6 +24,7 @@ export const Aprendizado = () => {
     d: 3,
   };
 
+  
   const fetchQuestions = useCallback(async () => {
     const response = await axios.get('http://127.0.0.1:5000/quiz');
     setQuizQuestions(response.data);
@@ -28,7 +34,9 @@ export const Aprendizado = () => {
     fetchQuestions();
   }, [fetchQuestions]);
 
+  //É a pergunta atual que o usuário está respondendo
   const currentQuiz = quizQuestions[currentQuestionIndex];
+  //É o index da resposta correta para a pergunta atual
   const correctAnswerIndex = currentQuiz
     ? answerMapping[currentQuiz.correctAnswer]
     : null;
@@ -40,13 +48,14 @@ export const Aprendizado = () => {
     }
   };
 
+  //Função para mudar a pergunta atual
   const handleNextQuestion = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setSelectedAnswer('');
       setIsAnswered(false);
     } else {
-      setIsOpen(false);
+      setModalIsOpen(false);
       setCurrentQuestionIndex(0);
       setSelectedAnswer('');
       setIsAnswered(false);
@@ -111,6 +120,7 @@ export const Aprendizado = () => {
       fontWeight: 'bold',
       cursor: 'pointer',
     },
+    //Baseado na resposta selecionada, troca as cores do botão e do titulo do botão
     answerButton: (isAnswered, isSelected, isCorrect) => ({
       display: 'block',
       width: '100%',
@@ -184,13 +194,16 @@ export const Aprendizado = () => {
           src={LightBulb}
         />
       </section>
+      
+      {/* Renderiza o botão de acesso ao quiz caso haja uma resposta do backend com as perguntas */}
       {quizQuestions?.length ? (
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => setModalIsOpen(true)}
           style={styles.quizButton}>
           Acessar Quiz
         </button>
       ) : null}
+
       <p style={styles.section}>
         A conscientização é essencial para incentivar a separação correta e a
         reciclagem dos resíduos.
@@ -214,7 +227,7 @@ export const Aprendizado = () => {
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={() => {}}
-        onRequestClose={() => setIsOpen(false)}
+        onRequestClose={() => setModalIsOpen(false)}
         style={{ overlay: styles.modalOverlay, content: styles.modalContent }}>
         {currentQuiz && (
           <div>
@@ -222,7 +235,7 @@ export const Aprendizado = () => {
               <h2 style={{ color: 'black' }}>
                 Pergunta: {currentQuestionIndex + 1}/{quizQuestions.length}
               </h2>
-              <span onClick={() => setIsOpen(false)} style={styles.sairButton}>
+              <span onClick={() => setModalIsOpen(false)} style={styles.sairButton}>
                 Sair
               </span>
             </div>

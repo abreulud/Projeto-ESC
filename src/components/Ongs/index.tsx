@@ -55,6 +55,7 @@ const ongsToBeDisplayed = [
   },
 ];
 
+//Tipagem das propriedades de uma ONG
 interface IOngProps {
   image: string;
   title: string;
@@ -64,7 +65,9 @@ interface IOngProps {
 }
 
 export const Ongs: React.FC = () => {
+  //ONG selecionada para renderizar os detalhes da mesma
   const [selectedOng, setSelectedOng] = useState<IOngProps>({} as IOngProps);
+  //Controla a renderização do modal com os detalhes da ONG selecionada
   const [modalIsOpen, setIsOpen] = useState(false);
 
   return (
@@ -178,6 +181,8 @@ export const Ongs: React.FC = () => {
           ))}
         </section>
       </div>
+
+      {/* Renderiza as ONGs na tela e baseado no ONG que o usuário selecionar, renderiza um modal com os detalhes da ONG selecionada */}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={() => {}}
