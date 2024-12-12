@@ -8,7 +8,6 @@ import dashboard from '../../assets/images/dashboard.png';
 import city from '../../assets/images/city.png';
 import tree from '../../assets/images/tree.png';
 
-// import { api } from '../../services/api';
 import CO2 from '../../assets/elements/co2.png';
 import NH3 from '../../assets/elements/nh3.png';
 import NO2 from '../../assets/elements/no2.png';
@@ -16,7 +15,6 @@ import O3 from '../../assets/elements/o3.png';
 import PM25 from '../../assets/elements/pm25.png';
 import SO2 from '../../assets/elements/so2.png';
 
-// const API_KEY = '032a8fa50ef0f9979a5439c779976b7d';
 
 const elementIcons = {
   co: CO2,
@@ -30,55 +28,7 @@ const elementIcons = {
 const elementsToBeDisplayed = [{name:'nh3', percentage: '0,13'}, {name:'no2', percentage: '0,92'}, {name:'o3', percentage: '8,24'}, {name:'co', percentage: '90,71'}]
 
 export const HomePage: React.FC = () => {
-  // const [apiData, setApiData] = useState<any>(null);
-
-  // const getApiData = async ({ lat, lon }: { lat: string; lon: string }) => {
-  //   await api
-  //     .get('/air_pollution', {
-  //       params: {
-  //         lat,
-  //         lon,
-  //         appid: API_KEY,
-  //       },
-  //     })
-  //     .then(response => {
-  //       const components = response.data.list[0].components;
-
-  //       const filteredComponents = elementsToBeDisplayed.reduce(
-  //         (acc, key) => {
-  //           if (components[key] !== undefined) {
-  //             //@ts-ignore
-  //             acc[key] = components[key];
-  //           }
-  //           return acc;
-  //         },
-  //         {},
-  //       );
-
-  //       const total = Object.values(filteredComponents).reduce(
-  //         //@ts-ignore
-  //         (sum, value) => sum + value,
-  //         0,
-  //       );
-
-  //       const componentArray = Object.entries(filteredComponents).map(
-  //         ([key, value]) => ({
-  //           name: key,
-  //           //@ts-ignore
-  //           percentage: ((value / total) * 100).toFixed(2),
-  //           //@ts-ignore
-  //           icon: elementIcons[key],
-  //         }),
-  //       );
-
-  //       setApiData(componentArray);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getApiData({ lat: '-12.908859', lon: '-38.455125' });
-  // }, []);
-
+  
   return (
     <div
       style={{
